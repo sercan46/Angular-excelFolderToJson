@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import  excelFoldertoJson from 'excel-folder-to-json'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'excelFilesDataToJson';
+  excelData=[];
+  onFileChange(e){
+    excelFoldertoJson(e,'Sheet1').then(resp=>{
+     this.excelData=resp;
+     console.log('asd',this.excelData)
+   });
+  }
 }
